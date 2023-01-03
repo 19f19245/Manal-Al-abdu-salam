@@ -1,0 +1,45 @@
+# Declare variables and arrays
+products = []  # list to store product dictionaries
+product_fields = ['name', 'description', 'price']  # fields for each product
+
+# Function to add a new product to the inventory
+def add_product(name, description, price):
+  new_product = {'name': name, 'description': description, 'price': price}
+  products.append(new_product)
+  print(f'Successfully added {name} to the inventory.')
+
+# Function to modify an existing product in the inventory
+def modify_product(name, field, new_value):
+  for product in products:
+    if product['name'] == name:
+      product[field] = new_value
+      print(f'Successfully modified {name}.')
+      return
+  print(f'Error: could not find product {name} in the inventory.')
+
+# Function to view information about a specific product
+def view_product(name):
+  for product in products:
+    if product['name'] == name:
+      print(f'Product name: {product["name"]}')
+      print(f'Description: {product["description"]}')
+      print(f'Price: ${product["price"]}')
+      return
+  print(f'Error: could not find product {name} in the inventory.')
+
+# Function to view all products in the inventory
+def view_all_products():
+  if not products:
+    print('Error: the inventory is empty.')
+    return
+  for product in products:
+    print(f'Product name: {product["name"]}')
+    print(f'Description: {product["description"]}')
+    print(f'Price: ${product["price"]}')
+
+# Test the functions
+add_product('table', 'a wooden table', 100)
+add_product('chair', 'a wooden chair', 50)
+modify_product('table', 'price', 150)
+view_product('table')
+view_all_products()
